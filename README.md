@@ -85,10 +85,13 @@ network = [
   zorb.layers.Softmax()
 ]
 
-# train network
+# create model
+model = zorb.models.Sequential(input_shape = dataset.dimensions['input']['train'][1:], network = network)
+
+# train model
 model.fit(X = dataset.train_x, Y = dataset.train_y)
 
-# evaluate network
+# evaluate model
 print(model.evaluate(X = dataset.test_x, Y = dataset.test_y))
 ```
 
