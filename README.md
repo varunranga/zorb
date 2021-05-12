@@ -97,7 +97,7 @@ print(model.evaluate(X = dataset.test_x, Y = dataset.test_y))
 
 ## Adding new layers
 
-To add a new layer, simply create a new file ```MyLayer.py``` in the ```src/layers``` directory with the following definitions:
+To add a new layer, simply create a new file ```MyLayer.py``` in the ```src/zorb/layers``` directory with the following definitions:
 
 ```
 #import required jax functions
@@ -135,12 +135,12 @@ class MyLayer():
     return True if not (jnp.isinf(self.W).any() or jnp.isnan(self.W).any()) else False
 ```
 
-Add ```enum.MyLayer``` to ```src/__init__.py```. \\
-Add line ```from .MyLayer import MyLayer``` to ```src/layers/__init__.py```
+Add ```enum.MyLayer``` to ```src/zorb/__init__.py```. \\
+Add line ```from .MyLayer import MyLayer``` to ```src/zorb/layers/__init__.py```
 
 ## Adding new models
 
-Similar to adding a new layer, to create a new model (would involves changes to the algorithm), simply create a new file ```MyModel.py``` in the ```src/models``` directory with the following definitions:
+Similar to adding a new layer, to create a new model (would involves changes to the algorithm), simply create a new file ```MyModel.py``` in the ```src/zorb/models``` directory with the following definitions:
 
 ```
 #import required jax functions
@@ -183,7 +183,7 @@ class MyModel():
     ... # evaluate and return dictionary of results
 ```
 
-Add line ```from .MyModel import MyModel``` to ```src/models/__init__.py```
+Add line ```from .MyModel import MyModel``` to ```src/zorb/models/__init__.py```
 
 ## Citing this work
 
