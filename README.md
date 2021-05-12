@@ -3,7 +3,7 @@
 This is a keras-style implementation of the Zeroth Order Relaxed Backpropagation ([ZORB](arxiv.org/abs/2011.08895)) on Jax. For reproducible experiments, please refer to the numpy version ([zorb-numpy](https://github.com/varunranga/zorb-numpy)).
 
 ZORB is currently a neural-network training algorithm, which can be extended for a general computational graph.
-Similar to how Gradient Descent drives the Backpropation Algorithm to train parameters of a neural network, ZORB applies the [linear least squares](https://en.wikipedia.org/wiki/Linear_least_squares) to a non-linear neural network function. 
+Similar to how the Backpropation Algorithm extends Gradient Descent for neural networks, ZORB extends the [linear least squares](https://en.wikipedia.org/wiki/Linear_least_squares) method to a non-linear neural network function. 
 
 ## Why should you use ZORB?
 
@@ -32,20 +32,20 @@ The quickest way to start using ZORB is through a docker container:
 
 ```
 $ docker pull varunranga/zorb
-$ docker run -it zorb \
-                      --dataset MNIST \
-                      --network Convolution2D[8,3] \
-                                Flatten \
-                                Dense[1024] \
-                                Sigmoid \ 
-                                Dense[10] \
-                                Softmax
+$ docker run -it varunranga/zorb \
+                      		 --dataset MNIST \
+                      		 --network Convolution2D[8,3] \
+                                	   Flatten \
+                                	   Dense[1024] \
+                                	   Sigmoid \ 
+                                	   Dense[10] \
+                                	   Softmax
 ```
 
 Alternatively, you can install this package by executing these commands:
 
 ```
-$ pip install zorbjax
+$ pip install -i https://test.pypi.org/simple/ zorbjax==0.0.1
 $ echo "alias zorb='<PATH TO zorbjax PACKAGE>/zorb.sh'"
 ```
 
@@ -77,7 +77,7 @@ network = [
   # flatten for Dense layers
   zorb.layers.Flatten(),
 
-  # define feed-forward network
+  # define Dense layers
   zorb.layers.Dense(units = 1024), 
   zorb.layers.Sigmoid(),
   zorb.layers.Dense(units = 10), 
