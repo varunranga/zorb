@@ -32,14 +32,14 @@ The quickest way to start using ZORB is through a docker container:
 
 ```
 $ docker pull varunranga/zorb
-$ docker run -it varunranga/zorb \
-                      		 --dataset MNIST \
-                      		 --network Convolution2D[8,3] \
-                                	   Flatten \
-                                	   Dense[1024] \
-                                	   Sigmoid \ 
-                                	   Dense[10] \
-                                	   Softmax
+$ docker run  varunranga/zorb \
+                      		--dataset MNIST \
+                      		--network Convolution2D[8,3] \
+                               		  Flatten \
+                                	  Dense[1024] \
+                                	  Sigmoid \ 
+                                	  Dense[10] \
+                                	  Softmax
 ```
 
 Alternatively, you can install this package by executing these commands:
@@ -52,13 +52,13 @@ $ echo "alias zorb='<PATH TO zorbjax PACKAGE>/zorb.sh'"
 You can access ZORB using ```zorb --help```. To create a simple convolution network for MNIST, you may use this command:
 ```
 $ zorb \
-       --dataset MNIST \
-       --network Convolution2D[8,3] \
-                 Flatten \
-                 Dense[1024] \
-                 Sigmoid \ 
-                 Dense[10] \ 
-                 Softmax
+         --dataset MNIST \
+         --network Convolution2D[8,3] \
+                   Flatten \
+                   Dense[1024] \
+                   Sigmoid \ 
+                   Dense[10] \ 
+                   Softmax
 ```
 
 ## Getting started with code
@@ -68,6 +68,7 @@ This package follows [tensorflow.keras.models.Sequential](https://keras.io/guide
 ```
 import zorb
 
+# create dataset
 dataset = zorb.datasets.MNIST()
 
 network = [
@@ -84,8 +85,10 @@ network = [
   zorb.layers.Softmax()
 ]
 
+# train network
 model.fit(X = dataset.train_x, Y = dataset.train_y)
 
+# evaluate network
 print(model.evaluate(X = dataset.test_x, Y = dataset.test_y))
 ```
 
