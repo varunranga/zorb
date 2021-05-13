@@ -35,6 +35,7 @@ $ docker pull varunranga/zorb
 $ docker run  varunranga/zorb \
                       		--dataset MNIST \
                       		--network Convolution2D[8,3] \
+					  Sigmoid \
                                		  Flatten \
                                 	  Dense[1024] \
                                 	  Sigmoid \ 
@@ -54,6 +55,7 @@ You can access ZORB using ```zorb --help```. To create a simple convolution netw
 $ zorb \
          --dataset MNIST \
          --network Convolution2D[8,3] \
+	 	   Sigmoid \
                    Flatten \
                    Dense[1024] \
                    Sigmoid \ 
@@ -71,9 +73,11 @@ import zorb
 # create dataset
 dataset = zorb.datasets.MNIST()
 
+# define network
 network = [
   # define Convolution2D layers
   zorb.layers.Convolution2D(n_kernels = 8, size = 3, stride = 1),
+  zorb.layers.Sigmoid(),
 
   # flatten for Dense layers
   zorb.layers.Flatten(),
